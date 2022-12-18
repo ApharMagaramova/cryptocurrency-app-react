@@ -1,0 +1,26 @@
+@media screen and (max-width:800px) {
+    .home-title {
+        font-size: 1.4rem !important;
+    }
+
+    .show-more {
+        font-size: 1.3rem !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .heading {
+        margin-top: 20px;
+    }
+}
+
+.home-heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.show-more {
+    margin-top: 0px !important;
+}
