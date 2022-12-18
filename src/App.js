@@ -21,7 +21,7 @@ const App = () => {
       </div>
 
       <div className="main">
-        <Layout> 
+        <Layout>
           <div className="routes">
             <Routes>
               <Route exact path="/" element={<Homepage />} />
@@ -39,9 +39,22 @@ const App = () => {
             </Routes>
           </div>
         </Layout>
-      </div>
 
-      <div className="footer"></div>
+        <div className="footer">
+          <Typography.Title
+            level={5}
+            style={{ color: "white", textAlign: "center" }}
+          >
+            Cryptoverse <hr />
+            All rights reserved
+          </Typography.Title>
+          <Space>
+            <Link to="/">Home</Link>
+            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/news">News</Link>
+          </Space>
+        </div>
+      </div>
     </div>
   );
 };

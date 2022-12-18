@@ -32,7 +32,7 @@
     color: white;
 }
 
-/* .menu-control-container {
+/* .menu-control-container{
     display: none !important;
     position: absolute !important;
     right: 10px !important;
@@ -51,8 +51,9 @@
         background-color: var(--bgSecondary);
     }
 
-    /* .menu-control-container {
+    /* .menu-control-container{
         display: block !important;
     } */
+
 
 }
