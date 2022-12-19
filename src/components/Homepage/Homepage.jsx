@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
@@ -11,10 +11,14 @@ import { Cryptocurrencies, News } from "../../components";
 const { Title } = Typography;
 
 const Homepage = () => {
-  const { data, isFetching } = useGetCryptosQuery(10);
+  const { data, isLoading, error, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  console.log(data);
+  useEffect(() => {
+    if (!isFetching) {
+      console.log("Homepage api data:", data);
+    }
+  });
 
   if (isFetching) return "Loading...";
 
