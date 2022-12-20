@@ -9,3 +9,8 @@
 .crypto-card .crypto-image {
     width: 35px;
 }
+
+.search-crypto {
+    margin: 20px auto 30px auto;
+    width: 250px;
+}

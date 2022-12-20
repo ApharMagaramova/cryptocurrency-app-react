@@ -9,20 +9,43 @@ import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
-  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
-  const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
+  const {
+    data: cryptosList,
+    isFetching,
+    isLoading,
+  } = useGetCryptosQuery(count);
+  const [cryptos, setCryptos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  console.log(data);
+  console.log("cryptoList", cryptosList?.data);
+
   useEffect(() => {
-    if (!isFetching) {
-      console.log("Cryptocurrencies: ", cryptos);
-    }
-  });
+    // console.log("Cryptocurrencies: ", cryptos);
+    // setCryptos(cryptosList);
+
+    const filteredData = cryptosList?.data?.coins.filter((coin) =>
+      coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // console.log("filtereddata", filteredData);
+
+    setCryptos(filteredData);
+  }, [cryptosList, searchTerm]);
 
   if (isFetching) return "Loading...";
 
   return (
     <>
+      {/* If it is on the HomePage show search box after clicking show more */}
+      {!simplified && (
+        <div className="search-crypto">
+          <Input
+            placeholder="Search Cryptocurrencies"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      )}
+
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos &&
           cryptos?.map((currency) => (
