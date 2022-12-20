@@ -15,13 +15,15 @@ const demoImage =
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
-  const { data: cryptoNews } = useGetCryptoNewsQuery({
+  const { data: cryptoNews, isLoading } = useGetCryptoNewsQuery({
     newsCategory: newsCategory,
     count: simplified ? 6 : 100,
   });
   const { data: cryptosList } = useGetCryptosQuery(100);
 
-  console.log("cryptoNews", cryptoNews);
+  if (!isLoading) {
+    console.log("cryptoNews", cryptoNews);
+  }
 
   if (!cryptoNews?.value) return "Loading...";
   return (
@@ -40,7 +42,9 @@ const News = ({ simplified }) => {
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
             {cryptosList?.data?.coins.map((coin) => (
-              <Option value={coin.name}>{coin.name}</Option>
+              <Option value={coin.name} key={coin.uuid}>
+                {coin.name}
+              </Option>
             ))}
           </Select>
         </Col>
