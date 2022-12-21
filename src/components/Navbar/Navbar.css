@@ -24,6 +24,10 @@
     width: 100%;
 }
 
+.logo-container h2 {
+    font-size: 25px;
+}
+
 .logo {
     margin: 0 0 0 15px;
 }
