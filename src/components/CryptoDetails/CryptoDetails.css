@@ -59,13 +59,14 @@
     color: var(--pink) !important;
 }
 
-/* .coin-details-heading h3 {
+.coin-details-heading h3 {
     color: var(--pink) !important;
 }
 
 .coin-details-heading p {
     color: black;
-} */
+    font-weight: normal;
+}
 
 .coin-stats {
     display: flex;

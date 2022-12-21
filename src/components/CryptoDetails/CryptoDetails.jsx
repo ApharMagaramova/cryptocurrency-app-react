@@ -18,7 +18,11 @@ import {
 
 import "./CryptoDetails.css";
 
-import { useGetCryptoDetailsQuery } from "../../services/cryptoApi";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../../services/cryptoApi";
+import LineChart from "../LineChart/LineChart";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -31,12 +35,21 @@ const CryptoDetails = () => {
     isFetching,
     isLoading,
   } = useGetCryptoDetailsQuery(coinId);
+
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
   const cryptoDetails = coin?.data?.coin;
 
   if (!isLoading) {
-    console.log(cryptoDetails);
+    console.log("cryptoDetails:", cryptoDetails);
+    console.log("coinHistory:", coinHistory);
   }
-  const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
+
+  if (isFetching) return "Loading...";
+
+  const time = ["1h", "3h", "12h", "24h", "7d", "30d", "3m", "1y", "3y", "5y"];
 
   const stats = [
     {
@@ -129,6 +142,12 @@ const CryptoDetails = () => {
       </Select>
 
       {/* line chart */}
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={millify(coin?.data?.coin.price)}
+        coinName={coin?.data?.coin.name}
+        timePeriod={timePeriod}
+      />
 
       {/* statistics */}
       <Col className="stats-container">
@@ -174,9 +193,15 @@ const CryptoDetails = () => {
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">
             What is {coin?.data?.coin.name}?
-            {console.log(typeof coin?.data?.coin.description)}
-            {HTMLReactParser(coin?.data?.coin.description)}
           </Title>
+
+          {coin?.data?.coin.description ? (
+            HTMLReactParser(coin?.data?.coin.description)
+          ) : (
+            <p style={{ color: "green", fontSize: "1rem" }}>
+              Loading description for {coin?.data?.coin.name}
+            </p>
+          )}
         </Row>
 
         {/* links */}
