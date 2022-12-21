@@ -4,7 +4,6 @@ import { Layout, Typography, Space } from "antd";
 
 import {
   Navbar,
-  Exchanges,
   Homepage,
   Cryptocurrencies,
   CryptoDetails,
@@ -26,7 +25,6 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Homepage />} />
 
-              <Route exact path="/exchanges" element={<Exchanges />} />
               <Route
                 exact
                 path="/cryptocurrencies"
