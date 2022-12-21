@@ -12,14 +12,8 @@ import { Cryptocurrencies, News } from "../../components";
 const { Title } = Typography;
 
 const Homepage = () => {
-  const { data: data, isLoading, error, isFetching } = useGetCryptosQuery(10);
+  const { data: data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
-
-  useEffect(() => {
-    if (!isFetching) {
-      console.log("Homepage api data:", data);
-    }
-  });
 
   if (isFetching) return <Loader />;
 

@@ -16,15 +16,11 @@ const demoImage =
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
-  const { data: cryptoNews, isLoading } = useGetCryptoNewsQuery({
+  const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory: newsCategory,
     count: simplified ? 6 : 100,
   });
   const { data: cryptosList } = useGetCryptosQuery(100);
-
-  if (!isLoading) {
-    console.log("cryptoNews", cryptoNews);
-  }
 
   if (!cryptoNews?.value) return <Loader />;
 
@@ -58,12 +54,7 @@ const News = ({ simplified }) => {
               <a href={news.url} target="_blank" rel="noreferrer">
                 <div className="news-image-container">
                   <Title className="news-title" level={5}>
-                    {
-                      // news.name.length > 65
-                      //   ? `${news.name.substring(0, 65)}...`
-                      //   :
-                      news.name
-                    }
+                    {news.name}
                   </Title>
                   <img
                     style={{ maxWith: "150px", maxHeight: "100px" }}

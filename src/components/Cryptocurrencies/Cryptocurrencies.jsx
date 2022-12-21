@@ -10,27 +10,14 @@ import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
-  const {
-    data: cryptosList,
-    isFetching,
-    isLoading,
-  } = useGetCryptosQuery(count);
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  if (!isLoading) {
-    console.log("cryptoList", cryptosList?.data);
-  }
-
   useEffect(() => {
-    // console.log("Cryptocurrencies: ", cryptos);
-    // setCryptos(cryptosList);
-
     const filteredData = cryptosList?.data?.coins.filter((coin) =>
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    // console.log("filtereddata", filteredData);
 
     setCryptos(filteredData);
   }, [cryptosList, searchTerm]);

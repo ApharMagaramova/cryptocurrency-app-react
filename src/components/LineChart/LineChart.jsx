@@ -26,8 +26,6 @@ ChartJS.register(
   Legend
 );
 
-// const { Title } = Typography;
-
 const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
   const coinPrice = [];
   const coinTimestamp = [];
@@ -43,16 +41,10 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
     ) {
       coinTimestamp.push(
         moment.unix(coinHistory?.data?.history[i].timestamp).format("HH:mm A")
-        // new Date(
-        //   coinHistory?.data?.history[i].timestamp * 1000
-        // ).toLocaleTimeString()
       );
     } else if (timePeriod === "7d" || timePeriod === "30d") {
       coinTimestamp.push(
         moment.unix(coinHistory?.data?.history[i].timestamp).format("DD-MMM")
-        // new Date(
-        //   coinHistory?.data?.history[i].timestamp * 1000
-        // ).toLocaleDateString()
       );
     } else if (timePeriod === "3m" || timePeriod === "1y") {
       coinTimestamp.push(
@@ -64,8 +56,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
       );
     }
   }
-
-  console.log("coinTimestamp: ", coinTimestamp);
 
   const data = {
     labels: coinTimestamp.reverse(),
@@ -105,10 +95,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
             return index % 2 === 0 ? this.getLabelForValue(val) : "";
           },
         },
-        // stepSize: (c) =>
-        //   (Math.max(coinHistory?.data?.history[0].timestamp) -
-        //     Math.min(coinHistory?.data?.history[0].timestamp)) /
-        //   2,
       },
     },
   };
