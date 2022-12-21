@@ -37,14 +37,6 @@ a:hover {
     padding: 20px;
 }
 
-
-.loader {
-    height: 81vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* @media screen and (max-width:1300px) {
     .main {
         margin-left: 50px;

@@ -34,7 +34,12 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinPrice.push(coinHistory?.data?.history[i].price);
 
-    if (timePeriod === "1h" || timePeriod === "3h" || timePeriod === "12h") {
+    if (
+      timePeriod === "1h" ||
+      timePeriod === "3h" ||
+      timePeriod === "12h" ||
+      timePeriod === "24h"
+    ) {
       coinTimestamp.push(
         new Date(
           coinHistory?.data?.history[i].timestamp * 1000
@@ -69,6 +74,24 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
     plugins: {
       legend: {
         position: "top",
+      },
+      title: {
+        display: true,
+        text: `${coinName} Price Chart`,
+      },
+    },
+    scales: {
+      y: {
+        reverse: true,
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+      x: {
+        stepSize: (c) =>
+          (Math.max(coinHistory?.data?.history[0].timestamp) -
+            Math.min(coinHistory?.data?.history[0].timestamp)) /
+          2,
       },
     },
   };

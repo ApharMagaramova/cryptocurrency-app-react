@@ -16,6 +16,8 @@ import {
   ThunderboltOutlined,
 } from "@ant-design/icons";
 
+import Loader from "../Loader/Loader";
+
 import "./CryptoDetails.css";
 
 import {
@@ -29,7 +31,7 @@ const { Option } = Select;
 
 const CryptoDetails = () => {
   const { coinId } = useParams();
-  const [timePeriod, setTimePeriod] = useState("7d");
+  const [timePeriod, setTimePeriod] = useState("24h");
   const {
     data: coin,
     isFetching,
@@ -47,7 +49,7 @@ const CryptoDetails = () => {
     console.log("coinHistory:", coinHistory);
   }
 
-  if (isFetching) return "Loading...";
+  if (isFetching) return <Loader />;
 
   const time = ["1h", "3h", "12h", "24h", "7d", "30d", "3m", "1y", "3y", "5y"];
 
@@ -131,7 +133,7 @@ const CryptoDetails = () => {
         </p>
       </Col>
       <Select
-        defaultValue="7d"
+        defaultValue="24h"
         className="select-timeperiod"
         placeholder="Select Time Period"
         onChange={(value) => setTimePeriod(value)}
