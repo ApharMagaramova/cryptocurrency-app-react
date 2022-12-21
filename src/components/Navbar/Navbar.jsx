@@ -3,7 +3,6 @@ import { Button, Menu, Typography, Avatar } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
-  MoneyCollectOutlined,
   BulbOutlined,
   FundOutlined,
   MenuOutlined,
@@ -45,7 +44,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (screenSize < 768) {
+    if (screenSize < 800) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);
