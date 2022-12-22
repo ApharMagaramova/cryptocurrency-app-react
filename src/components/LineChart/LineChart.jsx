@@ -58,7 +58,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
   }
 
   const data = {
-    labels: coinTimestamp.reverse(),
+    labels: coinTimestamp,
     datasets: [
       {
         label: "Price In USD",
