@@ -73,6 +73,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
   const options = {
     responsive: true,
     plugins: {
+      // showing label in top
       legend: {
         position: "top",
       },
