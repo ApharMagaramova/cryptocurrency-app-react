@@ -2,8 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- Site link is aviable in <a href="https://cryptoverse-react-redux-app-aaphar.vercel.app/">here</a>
-
 ## Available Scripts
 
 In the project directory, you can run:
