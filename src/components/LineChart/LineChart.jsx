@@ -83,12 +83,14 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
     },
     scales: {
       y: {
-        reverse: true,
         ticks: {
           beginAtZero: true,
         },
       },
       x: {
+        // reverse chart line
+        reverse: true,
+        reverseStacks: true,
         ticks: {
           callback: function (val, index) {
             // Hide every 2nd tick label
