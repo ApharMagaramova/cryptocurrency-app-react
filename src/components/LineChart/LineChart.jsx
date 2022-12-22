@@ -52,7 +52,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
       );
     } else {
       coinTimestamp.push(
-        moment.unix(coinHistory?.data?.history[i].timestamp).format("YYYY")
+        moment.unix(coinHistory?.data?.history[i].timestamp).format("YYYY-MMM")
       );
     }
   }
@@ -82,11 +82,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName, timePeriod }) => {
       },
     },
     scales: {
-      y: {
-        ticks: {
-          beginAtZero: true,
-        },
-      },
       x: {
         // reverse chart line
         reverse: true,
