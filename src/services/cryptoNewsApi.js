@@ -7,7 +7,7 @@ export const cryptoNewsApi = createApi({
     prepareHeaders: (headers) => {
       headers.set("X-BingApis-SDK", "true");
       headers.set("X-RapidAPI-Host", process.env.REACT_APP_NEWS_RAPIDAPI_HOST);
-      headers.set("X-RapidAPI-Key", process.env.REACT_APP_RAPIDAPI_KEY);
+      headers.set("X-RapidAPI-Key", process.env.REACT_APP_NEWSAPI_KEY);
 
       return headers;
     },
