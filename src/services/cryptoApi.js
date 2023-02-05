@@ -9,7 +9,7 @@ export const cryptoApi = createApi({
         "X-RapidAPI-Host",
         process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST
       );
-      headers.set("X-RapidAPI-Key", process.env.REACT_APP_RAPIDAPI_KEY);
+      headers.set("X-RapidAPI-Key", process.env.REACT_APP_NEWSAPI_KEY);
 
       return headers;
     },
